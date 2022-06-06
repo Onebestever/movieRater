@@ -1,0 +1,16 @@
+/* 
+#indexLanding{
+  background-image: url(img/popCorn.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+#indexLanding h1,body{
+  font-family: 'Fruktur', cursive ;
+  font-family: 'Rubik Glitch', cursive;
+  color:#f3cd88;
+  background-image: url(/public/img/popCorn.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* .jumbotron{ */

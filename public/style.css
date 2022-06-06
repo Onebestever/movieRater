@@ -1,0 +1,34 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+}
+img{
+  height: 200px;
+}
+
+/* Home.ejs styling */
+#true{
+  background-color: lightgoldenrodyellow;
+}
+
+
+
+#indexLanding{
+  background-image: url(img/popCorn.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+/* LOGIN PAGE */
+#loginLanding{
+  background-image: url(img/popCorn.png) !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Ordersystem.ejs styling */
+
+#orderSystem{
+  background-color: navy;
+}
