@@ -70,17 +70,17 @@ module.exports = function (app, passport, db) {
   // profile Page Routes ===============================================================
 
   app.post('/movies', (req, res) => {
+    console.log('app.post',req.body)
     db.collection('movies').findOne({
       name: req.body.name,
       rate: req.body.rate,
       recommend: req.body.recommend,
       genre: req.body.genre,
-      movietNotes: req.body.movieNotes,
+      movieNotes: req.body.movieNotes,
       thumbUp: 0, 
-      thumbDown:0
     }, (err, result) => {
       if (err) return console.log(err)
-      console.log('already exist', result)
+      // console.log('already exist', result)
       if (result === null) {
 
         db.collection('movies').save({
@@ -88,9 +88,8 @@ module.exports = function (app, passport, db) {
           rate: req.body.rate,
           recommend: req.body.recommend,
           genre: req.body.genre,
-          movietNotes: req.body.movieNotes,
+          movieNotes: req.body.movieNotes,
           thumbUp: 0,
-          thumbDown:0
         }, (err, result) => {
           if (err) return console.log(err)
           console.log(result)
@@ -105,14 +104,12 @@ module.exports = function (app, passport, db) {
     db.collection('movies')
       .findOneAndUpdate({
        name:req.body.name,
-       rate: req.body.rate,
-       recommend: req.body.recommend,
-       genre: req.body.genre,
-       movietNotes: req.body.movieNotes,
+      //  rate: req.body.rate,
+      //  recommend: req.body.recommend,
+      //  genre: req.body.genre,
+      //  movieNotes: req.body.movieNotes,
       }, {
-        $set: {
-          thumbUp: req.body.thumbUp + 1
-        }
+         $inc: { thumbUp:1 } 
       }, {
         sort: {
           _id: -1
@@ -128,15 +125,12 @@ module.exports = function (app, passport, db) {
     db.collection('movies')
       .findOneAndUpdate({
         name: req.body.name,
-        rate: req.body.rate,
-        recommend: req.body.recommend,
-        genre: req.body.genre,
-        movietNotes: req.body.movieNotes,
+        // rate: req.body.rate,
+        // recommend: req.body.recommend,
+        // genre: req.body.genre,
+        // movieNotes: req.body.movieNotes,
       }, {
-        $set: {
-          thumbUp: req.body.thumbUp - 1
-
-        }
+        $inc: { thumbUp:-1 } 
       }, {
         sort: {
           _id: -1
@@ -151,11 +145,7 @@ module.exports = function (app, passport, db) {
 
   app.delete('/movies', (req, res) => {
     db.collection('movies').findOneAndDelete({
-      name: req.body.name,
-      rate: req.body.rate,
-      recommend: req.body.recommend,
-      genre: req.body.genre,
-      movietNotes: req.body.movieNotes,
+      name: req.body.name
     }, (err, result) => {
       if (err) return res.send(500, err)
       res.send('Message deleted!')

@@ -46,11 +46,12 @@
                 <% for(var i=0; i<movies.length; i++) {%>
                   <li class="message">
                     <span><%= movies[i].name %></span>
-                    <span><%= movies[i].msg %></span>
+                    <span><%= movies[i].rate %></span>
+                    <span><%= movies[i].recommend %></span>
+                    <span><%= movies[i].genre %></span>
+                    <span><%= movies[i].movieNotes %></span>
                     <span><%= movies[i].thumbUp %></span>
-                    <!-- <span><%= messages[i].name %></span>
-                    <span><%= messages[i].msg %></span>
-                    <span><%= messages[i].thumbUp %></span> -->
+                    <span><%= movies[i].thumbDown %></span>
                     <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
                     <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
                     <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
@@ -62,7 +63,56 @@
               <% if (user.local.email) { %>
                 <form action="/movies" method="POST">
                   <input type="text" value="<%= user.local.email %>" name="name">
-                  <input type="text" placeholder="message" name="msg">
+                  <fieldset>
+                  <input type="text" placeholder="movieNotes" name="movieNotes">
+                </fieldset>
+                  <fieldset>
+                    <legend>Rate</legend>
+                    <label for="Poor">Poor</label>
+                    <input required type="radio" name="rate" id="tall" value="Poor">
+
+                    <label for="ok">Ok</label>
+                    <input type="radio" name="rate" id="grande" value="Ok">
+
+                    <label for="great">Great</label>
+                    <input type="radio" name="rate" id="venti" value="Great">
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Genres</legend>
+
+                    <label for="genres"> Drama </label>
+                    <input required type="radio" name="genre" id="drama" value="Drama">
+
+                    <label for="hawaiiKona"> Action </label>
+                    <input type="radio" name="genre" id="action" value="Action">
+
+                    <label for="kopiLuwac">Horror</label>
+                    <input type="radio" name="genre" id="kopiLuwac" value="Horror">
+                    <label for="genres"> Comedy </label>
+                    <input required type="radio" name="genre" id="comedy" value="Comedy">
+
+                    <label for="hawaiiKona"> Crime </label>
+                    <input type="radio" name="genre" id="crime" value="Crime">
+
+                    <label for="kopiLuwac">SciFi</label>
+                    <input type="radio" name="genre" id="sciFi" value="SciFi">
+                    <label for="kopiLuwac">Anime</label>
+                    <input type="radio" name="genre" id="anime" value="Anime">
+                </fieldset>
+
+                <fieldset>
+                    <legend>Reccomend</legend>
+
+                    <label>
+                        Yes
+                        <input required type="radio" name="recommend" value="Yes">
+                        <label>
+                    <label>
+                        No
+                        <input type="radio" name="recommend" value="No"></label>
+
                   <button type="submit">Submit</button>
                 </form>
               </div>
